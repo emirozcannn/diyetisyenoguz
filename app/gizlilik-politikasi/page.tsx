@@ -77,7 +77,7 @@ export default async function GizlilikPolitikasiPage() {
         <div className="container-custom max-w-4xl">
           <Card className="p-8 md:p-12 shadow-xl">
             <div className="prose prose-lg max-w-none">
-              <PortableText value={page.content} />
+              <PortableText value={page.content as any} />
             </div>
           </Card>
         </div>

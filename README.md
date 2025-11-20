@@ -182,9 +182,9 @@ Private - Oğuz Yolyapan
 
 - **Website**: oguzyolyapan.com
 - **Email**: info@oguzyolyapan.com
-- **Phone**: +90 (555) 123-4567
+
 
 ---
 
-**Geliştiren**: GitHub Copilot + Emir  
+
 **Tarih**: 20 Kasım 2024

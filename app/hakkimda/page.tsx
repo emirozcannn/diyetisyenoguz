@@ -384,7 +384,7 @@ export default function HakkimdaPage() {
                   className="group"
                 >
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all hover:-translate-y-2">
-                    {cert.image && (
+                    {cert.image ? (
                       <div className="relative h-64 bg-gray-100">
                         <Image
                           src={urlFor(cert.image).width(400).height(300).url()}
@@ -393,7 +393,7 @@ export default function HakkimdaPage() {
                           className="object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
-                    )}
+                    ) : null}
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-gray-900 mb-2">{cert.title}</h3>
                       <p className="text-gray-600 mb-1">{cert.issuer}</p>
