@@ -1,36 +1,190 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🥗 Oğuz Yolyapan - Uzman Diyetisyen Web Sitesi
 
-## Getting Started
+Modern, profesyonel ve SEO odaklı uzman diyetisyen web sitesi. Next.js 15, TypeScript, Tailwind CSS ve Sanity CMS ile geliştirilmiştir.
 
-First, run the development server:
+## ✨ Özellikler
 
+- ⚡ **Next.js 15** - App Router ile modern React framework
+- 🎨 **Tailwind CSS** - Utility-first CSS framework
+- 📝 **TypeScript** - Type-safe development
+- 🖼️ **Sanity CMS** - Headless CMS ile içerik yönetimi
+- 🎭 **Framer Motion** - Smooth animasyonlar
+- 📱 **Fully Responsive** - Mobil uyumlu tasarım
+- 🔍 **SEO Optimized** - Meta tags, sitemap, robots.txt
+- ♿ **Accessible** - WCAG uyumlu
+- 🧮 **Hesaplama Araçları** - BMI, BMR ve daha fazlası
+- 📅 **Randevu Sistemi** - Sanity entegreli form
+
+## 🚀 Kurulum
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm veya yarn
+- Sanity hesabı (ücretsiz)
+
+### Adımlar
+
+1. **Projeyi klonlayın**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repo-url>
+cd oguz
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Bağımlılıkları yükleyin**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Environment variables**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`.env.local` dosyası oluşturun:
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=5sq2xijg
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+SANITY_API_TOKEN=your_token_here
+```
 
-## Learn More
+4. **Development server'ı başlatın**
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Site `http://localhost:3000` adresinde çalışacaktır.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Sanity Studio'yu açın**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`http://localhost:3000/studio` adresinden Sanity Studio'ya erişebilirsiniz.
 
-## Deploy on Vercel
+## 📁 Proje Yapısı
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+oguz/
+├── app/                    # Next.js App Router
+│   ├── (pages)/           # Tüm sayfalar
+│   ├── api/               # API routes
+│   ├── studio/            # Sanity Studio
+│   ├── layout.tsx         # Root layout
+│   └── globals.css        # Global styles
+├── components/
+│   ├── ui/                # Base UI components
+│   ├── layout/            # Header, Footer
+│   ├── sections/          # Page sections
+│   ├── calculators/       # Hesaplama araçları
+│   └── forms/             # Form components
+├── lib/
+│   ├── sanity/            # Sanity config & schemas
+│   ├── utils/             # Utility functions
+│   └── constants.ts       # Constants
+├── types/                 # TypeScript types
+└── public/                # Static assets
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🎨 Sayfalar
+
+- **Ana Sayfa** (`/`) - Hero, hizmetler, referanslar, blog
+- **Hakkımda** (`/hakkimda`) - Biyografi, eğitim, deneyim
+- **Hizmetler** (`/hizmetler`) - Hizmet paketleri
+- **Blog** (`/blog`) - Blog yazıları listesi
+- **Hesaplama Araçları** (`/hesaplama-araclari`) - BMI, BMR vb.
+- **Randevu** (`/randevu`) - Randevu formu
+- **SSS** (`/sss`) - Sık sorulan sorular
+- **İletişim** (`/iletisim`) - İletişim bilgileri
+- **KVKK** (`/kvkk`) - KVKK aydınlatma metni
+- **Gizlilik Politikası** (`/gizlilik-politikasi`)
+
+## 🔧 Sanity CMS
+
+### Schemas
+
+- **siteSettings** - Site ayarları (singleton)
+- **service** - Hizmetler
+- **post** - Blog yazıları
+- **author** - Yazarlar
+- **category** - Kategoriler
+- **testimonial** - Referanslar
+- **faq** - SSS
+- **appointment** - Randevular
+- **contact** - İletişim mesajları
+- **aboutPage** - Hakkımda sayfası (singleton)
+- **legalPage** - Yasal sayfalar
+
+### Studio Erişimi
+
+Studio'ya erişmek için: `http://localhost:3000/studio`
+
+## 🚀 Deployment
+
+### Vercel (Önerilen)
+
+1. GitHub'a push edin
+2. Vercel'e import edin
+3. Environment variables ekleyin
+4. Deploy!
+
+```bash
+# Build komutu
+npm run build
+
+# Production server
+npm start
+```
+
+## 📝 Environment Variables
+
+```env
+# Sanity
+NEXT_PUBLIC_SANITY_PROJECT_ID=5sq2xijg
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+SANITY_API_TOKEN=your_token_here
+```
+
+## 🛠️ Teknolojiler
+
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **CMS**: Sanity
+- **Animations**: Framer Motion
+- **Forms**: React Hook Form + Zod
+- **Icons**: Lucide React
+
+## 📊 SEO
+
+- ✅ Meta tags (her sayfa)
+- ✅ Open Graph tags
+- ✅ Twitter Card tags
+- ✅ Sitemap.xml
+- ✅ Robots.txt
+- ✅ Semantic HTML
+- ✅ Alt tags
+- ✅ Structured data (geliştirilecek)
+
+## 🎯 TODO
+
+- [ ] Blog detay sayfası
+- [ ] Hizmet detay sayfaları
+- [ ] Daha fazla hesaplama aracı (BMR, Kalori, vs.)
+- [ ] İletişim formu API route
+- [ ] Email notifications
+- [ ] Google Analytics
+- [ ] Schema markup (LocalBusiness, MedicalBusiness)
+- [ ] Gerçek görseller
+- [ ] Sanity'ye örnek içerik
+
+## 📄 License
+
+Private - Oğuz Yolyapan
+
+## 👤 Contact
+
+- **Website**: oguzyolyapan.com
+- **Email**: info@oguzyolyapan.com
+- **Phone**: +90 (555) 123-4567
+
+---
+
+**Geliştiren**: GitHub Copilot + Emir  
+**Tarih**: 20 Kasım 2024
