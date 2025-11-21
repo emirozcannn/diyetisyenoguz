@@ -87,7 +87,7 @@ export default function SSSPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl font-bold mb-6 text-white"
+            className="text-5xl font-bold mb-6 text-white drop-shadow-lg"
           >
             Sık Sorulan Sorular
           </motion.h1>
@@ -128,7 +128,7 @@ export default function SSSPage() {
                   </div>
 
                   <Accordion.Root type="single" collapsible className="space-y-4">
-                    {categoryFaqs.map((faq, qIdx) => (
+                    {categoryFaqs.map((faq) => (
                       <Accordion.Item
                         key={faq._id}
                         value={faq._id}
@@ -159,8 +159,8 @@ export default function SSSPage() {
             className="mt-16 p-8 bg-linear-to-r from-emerald-600 to-teal-600 rounded-2xl text-white text-center shadow-xl"
           >
             <HelpCircle className="w-12 h-12 mx-auto mb-4 opacity-90" />
-            <h3 className="text-2xl font-bold mb-3">Sorunuzun cevabını bulamadınız mı?</h3>
-            <p className="mb-6 text-white/90">Bize ulaşın, size yardımcı olmaktan mutluluk duyarız!</p>
+            <h3 className="text-2xl font-bold mb-3 text-white">Sorunuzun cevabını bulamadınız mı?</h3>
+            <p className="mb-6 text-white/90">Bana ulaşın!, size yardımcı olmaktan mutluluk duyarız!</p>
             <a
               href="/iletisim"
               className="inline-block px-8 py-3 bg-white text-emerald-600 font-semibold rounded-xl hover:bg-gray-100 transition-colors shadow-lg"

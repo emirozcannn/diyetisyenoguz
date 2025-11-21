@@ -62,7 +62,7 @@ export default async function KVKKPage() {
             <Shield size={48} className="text-white" />
           </div>
           
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
             {page.title}
           </h1>
           

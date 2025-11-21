@@ -1,27 +1,48 @@
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube, ArrowRight } from 'lucide-react';
 import { CONTACT_INFO } from '@/lib/constants';
-import Button from '@/components/ui/Button';
 
-export default function Footer() {
+interface FooterLink {
+  name: string;
+  href: string;
+}
+
+interface FooterData {
+  title: string;
+  description: string;
+  servicesLinks: FooterLink[];
+  corporateLinks: FooterLink[];
+  legalLinks: FooterLink[];
+  copyrightText: string;
+}
+
+interface FooterProps {
+  data?: FooterData;
+}
+
+export default function Footer({ data }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = {
-    hizmetler: [
+  // Default fallback data
+  const footerData = data || {
+    title: 'Oğuz Yolyapan',
+    description: 'Profesyonel beslenme danışmanlığı ve kişiye özel diyet programları ile sağlıklı yaşam yolculuğunuzda yanınızdayız.',
+    servicesLinks: [
       { name: 'Online Diyet', href: '/hizmetler/online-diyet' },
       { name: 'Yüz Yüze Danışmanlık', href: '/hizmetler/yuz-yuze-danismanlık' },
       { name: 'Kurumsal Hizmetler', href: '/hizmetler/kurumsal' },
     ],
-    hakkinda: [
+    corporateLinks: [
       { name: 'Hakkımda', href: '/hakkimda' },
       { name: 'Blog', href: '/blog' },
       { name: 'SSS', href: '/sss' },
       { name: 'İletişim', href: '/iletisim' },
     ],
-    yasal: [
+    legalLinks: [
       { name: 'KVKK', href: '/kvkk' },
       { name: 'Gizlilik Politikası', href: '/gizlilik-politikasi' },
     ],
+    copyrightText: 'Tüm hakları saklıdır.',
   };
 
   return (
@@ -33,36 +54,14 @@ export default function Footer() {
       </div>
 
       <div className="container-custom py-16 relative z-10">
-        {/* Newsletter Section */}
-        <div className="mb-16 pb-16 border-b border-white/10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Sağlıklı Yaşam İpuçlarını Kaçırmayın
-            </h3>
-            <p className="text-gray-400 mb-8">
-              Beslenme tavsiyeleri, diyet programları ve özel fırsatlardan haberdar olmak için e-bültene kayıt olun.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="E-posta adresiniz"
-                className="flex-1 px-6 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 backdrop-blur-sm"
-              />
-              <Button className="bg-gradient-primary hover:scale-105 transition-all">
-                Kayıt Ol
-              </Button>
-            </form>
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <h3 className="text-white text-2xl font-bold mb-4 gradient-text-primary">
-              Oğuz Yolyapan
+            <h3 className="text-2xl font-bold mb-4 text-primary-400">
+              {footerData.title}
             </h3>
             <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-              Profesyonel beslenme danışmanlığı ve kişiye özel diyet programları ile sağlıklı yaşam yolculuğunuzda yanınızdayız.
+              {footerData.description}
             </p>
             <div className="flex gap-3">
               <a 
@@ -102,9 +101,9 @@ export default function Footer() {
 
           {/* Hizmetler */}
           <div>
-            <h4 className="text-white font-semibold mb-6 text-lg">Hizmetler</h4>
+            <h4 className="text-gray-900 font-semibold mb-6 text-lg">Hizmetler</h4>
             <ul className="space-y-3">
-              {footerLinks.hizmetler.map((link) => (
+              {footerData.servicesLinks && Array.isArray(footerData.servicesLinks) && footerData.servicesLinks.map((link) => (
                 <li key={link.name}>
                   <Link 
                     href={link.href} 
@@ -120,9 +119,9 @@ export default function Footer() {
 
           {/* Kurumsal */}
           <div>
-            <h4 className="text-white font-semibold mb-6 text-lg">Kurumsal</h4>
+            <h4 className="text-gray-900 font-semibold mb-6 text-lg">Kurumsal</h4>
             <ul className="space-y-3">
-              {footerLinks.hakkinda.map((link) => (
+              {footerData.corporateLinks && Array.isArray(footerData.corporateLinks) && footerData.corporateLinks.map((link) => (
                 <li key={link.name}>
                   <Link 
                     href={link.href} 
@@ -138,13 +137,13 @@ export default function Footer() {
 
           {/* İletişim */}
           <div>
-            <h4 className="text-white font-semibold mb-6 text-lg">İletişim</h4>
+            <h4 className="text-gray-900 font-semibold mb-6 text-lg">İletişim</h4>
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-primary-400" />
                 </div>
-                <span className="text-gray-400 leading-relaxed">{CONTACT_INFO.address}</span>
+                <span className="text-black leading-relaxed">{CONTACT_INFO.address}</span>
               </li>
               <li>
                 <a 
@@ -176,20 +175,23 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
             <p className="text-gray-400">
-              &copy; {currentYear} <span className="text-white font-medium">Oğuz Yolyapan</span>. Tüm hakları saklıdır.
+              &copy; {currentYear} <span className="text-primary-400 font-medium">{footerData.title}</span>. {footerData.copyrightText}
             </p>
             <div className="flex items-center gap-6">
-              {footerLinks.yasal.map((link) => (
-                <Link 
-                  key={link.name} 
-                  href={link.href} 
-                  className="text-gray-400 hover:text-primary-400 transition-colors"
-                >
-                  {link.name}
-                </Link>
+              {footerData.legalLinks && Array.isArray(footerData.legalLinks) && footerData.legalLinks.map((link, index) => (
+                <>
+                  <Link 
+                    key={link.name} 
+                    href={link.href} 
+                    className="text-gray-400 hover:text-primary-400 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                  {index < footerData.legalLinks.length - 1 && (
+                    <span key={`separator-${index}`} className="text-gray-600">•</span>
+                  )}
+                </>
               ))}
-              <span className="text-gray-600">•</span>
-              <span className="text-gray-400">Made with ❤️</span>
             </div>
           </div>
         </div>

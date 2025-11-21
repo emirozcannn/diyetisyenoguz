@@ -61,7 +61,7 @@ export default function BlogPage() {
   useEffect(() => {
     Promise.all([
       client.fetch<BlogPost[]>(`
-        *[_type == "post"] | order(publishedAt desc) {
+        *[_type == "blog"] | order(publishedAt desc) {
           _id,
           title,
           slug,
@@ -130,7 +130,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl font-bold mb-6 text-white"
+            className="text-5xl font-bold mb-6 text-white drop-shadow-lg"
           >
             Blog
           </motion.h1>
@@ -139,7 +139,7 @@ export default function BlogPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-xl text-white/90 max-w-2xl mx-auto"
+            className="text-xl text-white max-w-2xl mx-auto font-semibold drop-shadow"
           >
             Sağlıklı beslenme ve yaşam hakkında güncel bilgiler
           </motion.p>

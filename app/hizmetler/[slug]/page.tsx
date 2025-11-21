@@ -57,13 +57,13 @@ export default function ServiceDetailPage() {
             className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium mb-6"
           >
             <ArrowLeft size={20} />
-            Hizmetler'e Dön
+            Hizmetler&apos;e Dön
           </Link>
           
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-5xl font-bold mb-6 text-white"
+            className="text-5xl font-bold mb-6 text-white drop-shadow-lg"
           >
             {service.title}
           </motion.h1>

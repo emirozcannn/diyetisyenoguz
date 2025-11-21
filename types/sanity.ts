@@ -3,11 +3,11 @@ export interface Service {
   title: string;
   slug: { current: string };
   shortDescription: string;
-  fullDescription?: any;
+  fullDescription?: unknown;
   features: string[];
   price?: number;
   duration?: string;
-  image?: any;
+  image?: unknown;
   icon?: string;
   featured?: boolean;
   order: number;
@@ -18,8 +18,8 @@ export interface BlogPost {
   title: string;
   slug: { current: string };
   excerpt: string;
-  body?: any;
-  mainImage?: any;
+  body?: unknown;
+  mainImage?: unknown;
   publishedAt: string;
   author?: Author;
   categories?: Category[];
@@ -31,8 +31,8 @@ export interface Author {
   _id: string;
   name: string;
   slug: { current: string };
-  image?: any;
-  bio?: any;
+  image?: unknown;
+  bio?: unknown;
 }
 
 export interface Category {
@@ -48,7 +48,7 @@ export interface Testimonial {
   testimonial: string;
   rating: number;
   location: string;
-  photo?: any;
+  photo?: unknown;
   featured?: boolean;
   order: number;
 }
@@ -56,7 +56,7 @@ export interface Testimonial {
 export interface FAQ {
   _id: string;
   question: string;
-  answer: any;
+  answer: unknown;
   category: string;
   order: number;
 }
@@ -82,12 +82,12 @@ export interface Contact {
 }
 
 export interface AboutPage {
-  profileImage?: any;
-  bio: any;
+  profileImage?: unknown;
+  bio: unknown;
   education: Education[];
   experience: Experience[];
   certifications: Certification[];
-  philosophy: any;
+  philosophy: unknown;
   specialties: string[];
 }
 
@@ -119,7 +119,7 @@ export interface SEO {
 export interface SiteSettings {
   siteTitle: string;
   description: string;
-  logo?: any;
+  logo?: unknown;
   contactInfo: {
     email: string;
     phone: string;

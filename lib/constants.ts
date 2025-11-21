@@ -3,7 +3,7 @@ export const SITE_DESCRIPTION = 'Tekirdağ\'ta profesyonel beslenme danışmanl�
 export const SITE_URL = 'https://oguzyolyapan.com';
 
 export const CONTACT_INFO = {
-  email: 'info@oguzyolyapan.com',
+  email: 'oguzyolyapan@gmail.com',
   phone: '+90 546 855 62 68',
   whatsapp: '+905468556268',
   address: 'Barbaros Mah. Sahilkent Sokak. B Kısım No:20. Süleymanpaşa/Tekirdağ',
@@ -15,7 +15,7 @@ export const CONTACT_INFO = {
   socialMedia: {
     instagram: 'https://instagram.com/oguzyolyapan',
     facebook: 'https://facebook.com/oguzyolyapan',
-    linkedin: 'https://linkedin.com/in/oguzyolyapan',
+    linkedin: 'https://tr.linkedin.com/in/oguz-yolyapan-43961622a',
     youtube: 'https://youtube.com/@oguzyolyapan',
   },
 };

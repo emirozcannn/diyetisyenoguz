@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from "@/lib/constants";
+import { client } from "@/lib/sanity/client";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,11 +55,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Fetch footer data from Sanity
+  const footerData = await client.fetch(
+    `*[_type == "footer"][0]{
+      title,
+      description,
+      servicesLinks,
+      corporateLinks,
+      legalLinks,
+      copyrightText
+    }`,
+    {},
+    { next: { revalidate: 3600 } } // Cache for 1 hour
+  );
+
   return (
     <html lang="tr">
       <body className={inter.className}>
@@ -66,7 +81,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
-        <Footer />
+        <Footer data={footerData} />
         <WhatsAppButton />
       </body>
     </html>

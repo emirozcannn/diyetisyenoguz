@@ -1,17 +1,21 @@
 import siteSettings from './siteSettings';
 import service from './service';
 import blog from './blog';
-import author, { category } from './author';
+import author from './author';
+import category from './category';
 import testimonial from './testimonial';
 import faq from './faq';
 import appointment from './appointment';
 import contact from './contact';
 import aboutPage from './aboutPage';
+import homePage from './homePage';
 import legalPage from './legalPage';
 import navigation from './navigation';
+import footer from './footer';
 
 export const schemaTypes = [
   siteSettings,
+  homePage,
   service,
   blog,
   author,
@@ -23,4 +27,5 @@ export const schemaTypes = [
   aboutPage,
   legalPage,
   navigation,
+  footer,
 ];

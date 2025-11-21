@@ -66,6 +66,15 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
+}
+
+/* Override only for non-white text headings */
+h1:not(.text-white), 
+h2:not(.text-white), 
+h3:not(.text-white), 
+h4:not(.text-white), 
+h5:not(.text-white), 
+h6:not(.text-white) {
   color: rgb(23, 23, 23);
 }
 

@@ -15,10 +15,53 @@ export default function IletisimPage() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/iletisim', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: data.message || 'Mesajınız başarıyla gönderildi!',
+        });
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: data.error || 'Bir hata oluştu, lütfen tekrar deneyin.',
+        });
+      }
+    } catch {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Bağlantı hatası. Lütfen internet bağlantınızı kontrol edin.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -50,7 +93,7 @@ export default function IletisimPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold mb-6 text-white"
+            className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg"
           >
             İletişim
           </motion.h1>
@@ -59,13 +102,13 @@ export default function IletisimPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
+            className="text-xl text-white max-w-2xl mx-auto leading-relaxed font-semibold drop-shadow"
           >
-            Sağlıklı yaşam yolculuğunuza başlamak için bizimle iletişime geçin
+            Sağlıklı yaşam yolculuğunuza başlamak için benimle iletişime geçin
           </motion.p>
         </div>
       </section>
-
+<br />   <br />   <br />
       {/* Contact Info Cards */}
       <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
         <div className="container-custom">
@@ -154,6 +197,18 @@ export default function IletisimPage() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {submitStatus.type && (
+                    <div
+                      className={`p-4 rounded-xl ${
+                        submitStatus.type === 'success'
+                          ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                          : 'bg-red-50 text-red-800 border border-red-200'
+                      }`}
+                    >
+                      {submitStatus.message}
+                    </div>
+                  )}
+
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Adınız Soyadınız *
@@ -217,9 +272,13 @@ export default function IletisimPage() {
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-gradient-primary hover:shadow-xl transition-all group">
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-gradient-primary hover:shadow-xl transition-all group"
+                    disabled={isSubmitting}
+                  >
                     <Send className="mr-2 group-hover:translate-x-1 transition-transform" size={20} />
-                    Mesaj Gönder
+                    {isSubmitting ? 'Gönderiliyor...' : 'Mesaj Gönder'}
                   </Button>
                 </form>
               </Card>
@@ -260,7 +319,7 @@ export default function IletisimPage() {
                       <MapPin className="text-white" size={24} />
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1 text-lg">Kliniğimiz</h4>
+                      <h4 className="font-semibold mb-1 text-lg">Adres</h4>
                       <p className="text-gray-600 leading-relaxed">
                         {CONTACT_INFO.address}
                       </p>

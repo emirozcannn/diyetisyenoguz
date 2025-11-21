@@ -126,15 +126,15 @@ export default function HakkimdaPage() {
             >
               <div>
                 <motion.h1
-                  className="text-6xl font-bold mb-6 leading-tight"
+                    className="text-6xl font-bold mb-6 leading-tight text-gray-900"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
                 >
-                  <span className="text-white">{data.hero.title}</span>
+                    <span>{data.hero.title}</span>
                 </motion.h1>
                 <motion.p
-                  className="text-xl text-white/90 leading-relaxed"
+                    className="text-xl text-gray-800 leading-relaxed"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
@@ -143,7 +143,7 @@ export default function HakkimdaPage() {
                 </motion.p>
               </div>
 
-              {data.hero.badges && data.hero.badges.length > 0 && (
+              {data.hero.badges && Array.isArray(data.hero.badges) && data.hero.badges.length > 0 && (
                 <motion.div
                   className="flex flex-wrap gap-4"
                   initial={{ opacity: 0, y: 20 }}
@@ -227,7 +227,7 @@ export default function HakkimdaPage() {
           </motion.div>
 
           {/* Stats */}
-          {data.biography.stats && data.biography.stats.length > 0 && (
+          {data.biography.stats && Array.isArray(data.biography.stats) && data.biography.stats.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -296,7 +296,7 @@ export default function HakkimdaPage() {
               </div>
 
               <div className="space-y-6">
-                {data.education.map((edu, idx) => (
+                {data.education && Array.isArray(data.education) && data.education.map((edu, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
@@ -332,7 +332,7 @@ export default function HakkimdaPage() {
               </div>
 
               <div className="space-y-6">
-                {data.experience.map((exp, idx) => (
+                {data.experience && Array.isArray(data.experience) && data.experience.map((exp, idx) => (
                   <motion.div
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
@@ -357,7 +357,7 @@ export default function HakkimdaPage() {
       </section>
 
       {/* Certificates Section - NEW */}
-      {data.certificates && data.certificates.length > 0 && (
+      {data.certificates && Array.isArray(data.certificates) && data.certificates.length > 0 && (
         <section className="section-padding bg-white">
           <div className="container-custom">
             <motion.div
@@ -374,7 +374,7 @@ export default function HakkimdaPage() {
             </motion.div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {data.certificates.map((cert, idx) => (
+              {Array.isArray(data.certificates) && data.certificates.map((cert, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 30 }}
@@ -408,7 +408,7 @@ export default function HakkimdaPage() {
       )}
 
       {/* Publications/Thesis Section - NEW */}
-      {data.publications && data.publications.length > 0 && (
+      {data.publications && Array.isArray(data.publications) && data.publications.length > 0 && (
         <section className="section-padding bg-linear-to-b from-gray-50 to-white">
           <div className="container-custom max-w-5xl">
             <motion.div
@@ -425,7 +425,7 @@ export default function HakkimdaPage() {
             </motion.div>
 
             <div className="space-y-6">
-              {data.publications.map((pub, idx) => (
+              {Array.isArray(data.publications) && data.publications.map((pub, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: -30 }}
