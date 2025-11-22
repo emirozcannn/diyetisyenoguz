@@ -59,6 +59,7 @@ export default function BlogPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log('Blog page: Fetching blog posts...');
     Promise.all([
       client.fetch<BlogPost[]>(`
         *[_type == "blog"] | order(publishedAt desc) {
@@ -86,11 +87,16 @@ export default function BlogPage() {
       client.fetch<Category[]>('*[_type == "category"] | order(title asc)')
     ])
       .then(([postsData, categoriesData]) => {
+        console.log('Blog posts fetched:', postsData);
+        console.log('Categories fetched:', categoriesData);
         setPosts(postsData);
         setCategories(categoriesData);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((error) => {
+        console.error('Error fetching blog data:', error);
+        setLoading(false);
+      });
   }, []);
 
   const filteredPosts = posts.filter((post) => {

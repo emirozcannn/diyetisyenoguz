@@ -106,7 +106,9 @@ export default async function Home() {
           title: homeData?.hero?.title,
           subtitle: homeData?.hero?.subtitle,
           description: homeData?.hero?.description,
+          highlightedText: homeData?.hero?.highlightedText,
           image: homeData?.hero?.image,
+          features: homeData?.hero?.features,
           primaryButtonText: homeData?.hero?.primaryButtonText,
           primaryButtonLink: homeData?.hero?.primaryButtonLink,
           secondaryButtonText: homeData?.hero?.secondaryButtonText,
@@ -128,6 +130,8 @@ export default async function Home() {
         description={homeData?.aboutSection?.description}
         image={homeData?.aboutSection?.image}
         ctaText={homeData?.aboutSection?.ctaText}
+        highlights={homeData?.aboutSection?.highlights}
+        floatingStats={homeData?.aboutSection?.floatingStats}
       />
       
       <Testimonials 

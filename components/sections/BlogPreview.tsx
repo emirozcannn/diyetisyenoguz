@@ -28,34 +28,13 @@ export default function BlogPreview({ title: propTitle, subtitle: propSubtitle, 
   const subtitle = propSubtitle || 'Sağlıklı beslenme ve yaşam hakkında güncel bilgiler';
   const buttonText = ctaText || 'Tüm Blog Yazıları';
 
-  const defaultPosts = [
-    {
-      _id: '1',
-      title: 'Sağlıklı Kilo Vermenin 10 Altın Kuralı',
-      slug: { current: 'saglikli-kilo-vermenin-10-altin-kurali' },
-      excerpt: 'Hızlı değil, kalıcı sonuçlar için bilmeniz gereken temel prensipler.',
-      publishedAt: '2024-11-15',
-      mainImage: null,
-    },
-    {
-      _id: '2',
-      title: 'Protein Nedir ve Neden Önemlidir?',
-      slug: { current: 'protein-nedir-ve-neden-onemlidir' },
-      excerpt: 'Vücudunuzun yapı taşı protein hakkında bilmeniz gerekenler.',
-      publishedAt: '2024-11-10',
-      mainImage: null,
-    },
-    {
-      _id: '3',
-      title: 'Metabolizma Hızlandırmanın Doğal Yolları',
-      slug: { current: 'metabolizma-hizlandirmanin-dogal-yollari' },
-      excerpt: 'İlaçsız ve doğal yöntemlerle metabolizmanızı hızlandırın.',
-      publishedAt: '2024-11-05',
-      mainImage: null,
-    },
-  ];
+  // Sadece Sanity'den gelen postları kullan
+  const displayPosts = posts || [];
 
-  const displayPosts = posts && posts.length > 0 ? posts : defaultPosts;
+  // Eğer post yoksa bölümü gösterme
+  if (displayPosts.length === 0) {
+    return null;
+  }
 
   return (
     <section className="section-padding bg-white">

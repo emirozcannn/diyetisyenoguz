@@ -3,7 +3,11 @@
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { motion } from 'framer-motion';
-import { Award, BookOpen, Heart, Users } from 'lucide-react';
+import { 
+  Award, BookOpen, Heart, Users, GraduationCap, Briefcase, FileCheck, 
+  Star, Target, Shield, Gem, CheckCircle, Activity, TrendingUp, 
+  Clock, Calendar, MessageCircle, Phone, Mail, MapPin 
+} from 'lucide-react';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity/image';
 
@@ -13,43 +17,61 @@ interface AboutPreviewProps {
   description?: string[];
   image?: unknown;
   ctaText?: string;
+  highlights?: Array<{
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+  floatingStats?: {
+    value: string;
+    label: string;
+  };
 }
 
-const highlights = [
-  {
-    icon: Award,
-    title: 'Sertifikalı Uzman',
-    description: '5+ yıllık deneyim ve uluslararası sertifikalar',
-  },
-  {
-    icon: Users,
-    title: '100+ Mutlu Danışan',
-    description: 'Başarı hikayeleri ve memnun danışanlar',
-  },
-  {
-    icon: Heart,
-    title: 'Kişiye Özel Yaklaşım',
-    description: 'Tek tip program değil, sizin için özel çözümler',
-  },
-  {
-    icon: BookOpen,
-    title: 'Sürekli Eğitim',
-    description: 'Güncel beslenme bilimi ve araştırmalar',
-  },
-];
+const iconMap: Record<string, React.ComponentType<{ className?: string; size?: number }>> = {
+  Award,
+  Users,
+  Heart,
+  BookOpen,
+  GraduationCap,
+  Briefcase,
+  FileCheck,
+  Star,
+  Target,
+  Shield,
+  Gem,
+  CheckCircle,
+  Activity,
+  TrendingUp,
+  Clock,
+  Calendar,
+  MessageCircle,
+  Phone,
+  Mail,
+  MapPin,
+};
 
-export default function AboutPreview({ title: propTitle, subtitle: propSubtitle, description, image, ctaText }: AboutPreviewProps) {
+export default function AboutPreview({ 
+  title: propTitle, 
+  subtitle: propSubtitle, 
+  description, 
+  image, 
+  ctaText,
+  highlights: propHighlights,
+  floatingStats 
+}: AboutPreviewProps) {
   const title = propTitle || 'Merhaba! Ben Oğuz Yolyapan';
   const subtitle = propSubtitle || 'Hakkımda';
   const buttonText = ctaText || 'Daha Fazla Bilgi';
-  const descriptions = Array.isArray(description) 
-    ? description 
-    : description 
-      ? [description]
-      : [
-          '10 yılı aşkın süredir beslenme danışmanlığı alanında hizmet veriyorum. Amacım, sizlere sadece kilo vermek değil, sağlıklı yaşam alışkanlıkları kazandırmaktır.',
-          'Her bireyin farklı ihtiyaçları olduğuna inanıyorum. Bu yüzden, kişiye özel beslenme programları hazırlıyor ve süreç boyunca yanınızda oluyorum.'
-        ];
+  
+  // Description - Sanity'den gelen değeri kullan, yoksa boş array
+  const descriptions = description && description.length > 0 ? description : [];
+
+  // Highlights - Sanity'den gelen değeri kullan, yoksa boş array
+  const highlights = propHighlights || [];
+  
+  // Floating stats - Sanity'den gelen değeri kullan, yoksa null
+  const stats = floatingStats;
 
   return (
     <section className="section-padding bg-white relative overflow-hidden">
@@ -88,12 +110,14 @@ export default function AboutPreview({ title: propTitle, subtitle: propSubtitle,
               </div>
               
               {/* Floating Stats */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-6">
-                <div className="text-center">
-                  <div className="text-4xl font-bold gradient-text-primary">10+</div>
-                  <div className="text-sm text-gray-600 mt-1">Yıllık Deneyim</div>
+              {stats && stats.value && stats.label && (
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-6">
+                  <div className="text-center">
+                    <div className="text-4xl font-bold gradient-text-primary">{stats.value}</div>
+                    <div className="text-sm text-gray-600 mt-1">{stats.label}</div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </motion.div>
 
@@ -125,35 +149,37 @@ export default function AboutPreview({ title: propTitle, subtitle: propSubtitle,
             ))}
 
             {/* Highlights Grid */}
-            <div className="grid sm:grid-cols-2 gap-6 mb-8">
-              {highlights.map((item, index) => {
-                const Icon = item.icon;
-                return (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                    className="flex gap-3 p-4 rounded-xl hover:bg-primary-50 transition-colors group"
-                  >
-                    <div className="shrink-0">
-                      <div className="p-3 bg-gradient-primary rounded-xl shadow-md group-hover:scale-110 transition-transform">
-                        <Icon className="text-white" size={24} />
+            {highlights && highlights.length > 0 && (
+              <div className="grid sm:grid-cols-2 gap-6 mb-8">
+                {highlights.map((item, index) => {
+                  const Icon = iconMap[item.icon] || Award;
+                  return (
+                    <motion.div
+                      key={item.title}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                      className="flex gap-3 p-4 rounded-xl hover:bg-primary-50 transition-colors group"
+                    >
+                      <div className="shrink-0">
+                        <div className="p-3 bg-gradient-primary rounded-xl shadow-md group-hover:scale-110 transition-transform">
+                          <Icon className="text-white" size={24} />
+                        </div>
                       </div>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-gray-900 mb-1">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm text-gray-600 leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-1">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            )}
 
             <Link href="/hakkimda">
               <Button size="lg" className="bg-gradient-primary hover:shadow-2xl hover:scale-105 transition-all">
