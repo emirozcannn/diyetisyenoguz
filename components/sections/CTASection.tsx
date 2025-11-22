@@ -69,26 +69,6 @@ export default function CTASection({
               </Button>
             </a>
           </div>
-
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-8 mt-12 pt-12 border-t border-white/20">
-            <div className="text-center">
-              <div className="text-3xl font-bold">500+</div>
-              <div className="text-sm opacity-80 mt-1">Mutlu Danışan</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold">%95</div>
-              <div className="text-sm opacity-80 mt-1">Başarı Oranı</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold">10+</div>
-              <div className="text-sm opacity-80 mt-1">Yıllık Deneyim</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold">24/7</div>
-              <div className="text-sm opacity-80 mt-1">WhatsApp Destek</div>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

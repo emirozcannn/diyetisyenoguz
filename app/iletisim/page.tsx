@@ -1,13 +1,56 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import { MapPin, Phone, Mail, Clock, Send, Instagram, Facebook, Linkedin, Youtube, MessageSquare } from 'lucide-react';
 import { CONTACT_INFO } from '@/lib/constants';
+import { client } from '@/lib/sanity/client';
+
+interface ContactPageData {
+  hero: {
+    title: string;
+    subtitle: string;
+  };
+  contactCards: {
+    phone: string;
+    email: string;
+    address: string;
+    addressShort: string;
+    workingHours: string;
+    workingHoursShort: string;
+  };
+  contactForm: {
+    title: string;
+    description: string;
+  };
+  addressDetails: {
+    title: string;
+    mapUrl?: string;
+    workingHours: Array<{
+      day: string;
+      hours: string;
+      isClosed: boolean;
+    }>;
+    socialMediaTitle: string;
+  };
+}
 
 export default function IletisimPage() {
+  const [data, setData] = useState<ContactPageData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    client
+      .fetch<ContactPageData>('*[_type == "contactPage"][0]')
+      .then((result) => {
+        setData(result);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -71,6 +114,14 @@ export default function IletisimPage() {
     }));
   };
 
+  if (loading || !data) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white">
       {/* Hero */}
@@ -95,7 +146,7 @@ export default function IletisimPage() {
             transition={{ delay: 0.2 }}
             className="text-5xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg"
           >
-            İletişim
+            {data?.hero?.title || 'İletişim'}
           </motion.h1>
           
           <motion.p
@@ -104,13 +155,13 @@ export default function IletisimPage() {
             transition={{ delay: 0.3 }}
             className="text-xl text-white max-w-2xl mx-auto leading-relaxed font-semibold drop-shadow"
           >
-            Sağlıklı yaşam yolculuğunuza başlamak için benimle iletişime geçin
+            {data?.hero?.subtitle || 'Sağlıklı yaşam yolculuğunuza başlamak için benimle iletişime geçin'}
           </motion.p>
         </div>
       </section>
 <br />   <br />   <br />
       {/* Contact Info Cards */}
-      <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
+      <section className="section-padding bg-linear-to-b from-gray-50 to-white">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 -mt-24 relative z-10 mb-16">
             <motion.div
@@ -119,10 +170,10 @@ export default function IletisimPage() {
               transition={{ delay: 0.1 }}
             >
               <Card className="text-center h-full bg-white shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-                <div className="p-4 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="p-4 bg-linear-to-br from-emerald-500 to-teal-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <Phone className="text-white" size={28} />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Telefon</h3>
+                <h3 className="font-semibold text-lg mb-2">{data?.contactCards?.phone || 'Telefon'}</h3>
                 <a href={`tel:${CONTACT_INFO.phone}`} className="text-gray-600 hover:text-primary-600 transition-colors font-medium">
                   {CONTACT_INFO.phone}
                 </a>
@@ -135,10 +186,10 @@ export default function IletisimPage() {
               transition={{ delay: 0.2 }}
             >
               <Card className="text-center h-full bg-white shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-                <div className="p-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="p-4 bg-linear-to-br from-blue-500 to-indigo-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <Mail className="text-white" size={28} />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">E-posta</h3>
+                <h3 className="font-semibold text-lg mb-2">{data?.contactCards?.email || 'E-posta'}</h3>
                 <a href={`mailto:${CONTACT_INFO.email}`} className="text-gray-600 hover:text-primary-600 transition-colors font-medium break-all">
                   {CONTACT_INFO.email}
                 </a>
@@ -151,12 +202,12 @@ export default function IletisimPage() {
               transition={{ delay: 0.3 }}
             >
               <Card className="text-center h-full bg-white shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-                <div className="p-4 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="p-4 bg-linear-to-br from-purple-500 to-pink-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <MapPin className="text-white" size={28} />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Adres</h3>
+                <h3 className="font-semibold text-lg mb-2">{data?.contactCards?.address || 'Adres'}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Süleymanpaşa, Tekirdağ
+                  {data?.contactCards?.addressShort || 'Süleymanpaşa, Tekirdağ'}
                 </p>
               </Card>
             </motion.div>
@@ -167,12 +218,12 @@ export default function IletisimPage() {
               transition={{ delay: 0.4 }}
             >
               <Card className="text-center h-full bg-white shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1">
-                <div className="p-4 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <div className="p-4 bg-linear-to-br from-orange-500 to-red-600 rounded-2xl w-16 h-16 flex items-center justify-center mx-auto mb-4">
                   <Clock className="text-white" size={28} />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">Çalışma Saatleri</h3>
+                <h3 className="font-semibold text-lg mb-2">{data?.contactCards?.workingHours || 'Çalışma Saatleri'}</h3>
                 <p className="text-gray-600 text-sm">
-                  Pzt-Cmt: 09:00-14:00
+                  {data?.contactCards?.workingHoursShort || 'Pzt-Cmt: 09:00-14:00'}
                 </p>
               </Card>
             </motion.div>
@@ -189,10 +240,10 @@ export default function IletisimPage() {
               <Card className="p-8 shadow-xl">
                 <div className="mb-6">
                   <h2 className="text-3xl font-bold gradient-text-primary mb-2">
-                    Mesaj Gönderin
+                    {data?.contactForm?.title || 'Mesaj Gönderin'}
                   </h2>
                   <p className="text-gray-600">
-                    Formu doldurun, en kısa sürede size geri dönelim
+                    {data?.contactForm?.description || 'Formu doldurun, en kısa sürede size geri dönelim'}
                   </p>
                 </div>
 
@@ -295,7 +346,7 @@ export default function IletisimPage() {
               <Card className="p-0 overflow-hidden shadow-xl">
                 <div className="aspect-video relative">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.8!2d27.5!3d40.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDU4JzQ4LjAiTiAyN8KwMzAnMDAuMCJF!5e0!3m2!1str!2str!4v1234567890"
+                    src={data?.addressDetails?.mapUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.8!2d27.5!3d40.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDU4JzQ4LjAiTiAyN8KwMzAnMDAuMCJF!5e0!3m2!1str!2str!4v1234567890"}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -310,16 +361,16 @@ export default function IletisimPage() {
               {/* Address Details */}
               <Card className="p-8 shadow-xl">
                 <h3 className="text-2xl font-bold mb-6 gradient-text-primary">
-                  Adres Bilgileri
+                  {data?.addressDetails?.title || 'Adres Bilgileri'}
                 </h3>
                 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-gradient-to-br from-primary-500 to-accent-600 rounded-xl flex-shrink-0">
+                    <div className="p-3 bg-linear-to-br from-primary-500 to-accent-600 rounded-xl shrink-0">
                       <MapPin className="text-white" size={24} />
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1 text-lg">Adres</h4>
+                      <h4 className="font-semibold mb-1 text-lg">{data?.contactCards?.address || 'Adres'}</h4>
                       <p className="text-gray-600 leading-relaxed">
                         {CONTACT_INFO.address}
                       </p>
@@ -328,37 +379,48 @@ export default function IletisimPage() {
 
                   <div className="border-t pt-6">
                     <div className="flex items-start gap-4">
-                      <div className="p-3 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex-shrink-0">
+                      <div className="p-3 bg-linear-to-br from-emerald-500 to-teal-600 rounded-xl shrink-0">
                         <Clock className="text-white" size={24} />
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-semibold mb-3 text-lg">Çalışma Saatleri</h4>
+                        <h4 className="font-semibold mb-3 text-lg">{data?.contactCards?.workingHours || 'Çalışma Saatleri'}</h4>
                         <div className="space-y-2 text-sm">
-                          <div className="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
-                            <span className="text-gray-700 font-medium">Pazartesi - Cuma</span>
-                            <span className="text-gray-600">09:00 - 18:00</span>
-                          </div>
-                          <div className="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
-                            <span className="text-gray-700 font-medium">Cumartesi</span>
-                            <span className="text-gray-600">09:00 - 14:00</span>
-                          </div>
-                          <div className="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
-                            <span className="text-gray-700 font-medium">Pazar</span>
-                            <span className="text-red-600 font-medium">Kapalı</span>
-                          </div>
+                          {data?.addressDetails?.workingHours && data.addressDetails.workingHours.length > 0 ? (
+                            data.addressDetails.workingHours.map((item, idx) => (
+                              <div key={idx} className="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
+                                <span className="text-gray-700 font-medium">{item.day}</span>
+                                <span className={item.isClosed ? 'text-red-600 font-medium' : 'text-gray-600'}>{item.hours}</span>
+                              </div>
+                            ))
+                          ) : (
+                            <>
+                              <div className="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
+                                <span className="text-gray-700 font-medium">Pazartesi - Cuma</span>
+                                <span className="text-gray-600">09:00 - 18:00</span>
+                              </div>
+                              <div className="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
+                                <span className="text-gray-700 font-medium">Cumartesi</span>
+                                <span className="text-gray-600">09:00 - 14:00</span>
+                              </div>
+                              <div className="flex justify-between items-center p-2 bg-gray-50 rounded-lg">
+                                <span className="text-gray-700 font-medium">Pazar</span>
+                                <span className="text-red-600 font-medium">Kapalı</span>
+                              </div>
+                            </>
+                          )}
                         </div>
                       </div>
                     </div>
                   </div>
 
                   <div className="border-t pt-6">
-                    <h4 className="font-semibold mb-4 text-lg">Sosyal Medya</h4>
+                    <h4 className="font-semibold mb-4 text-lg">{data?.addressDetails?.socialMediaTitle || 'Sosyal Medya'}</h4>
                     <div className="flex gap-3">
                       <a
                         href={CONTACT_INFO.socialMedia.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 p-3 bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-xl hover:shadow-lg transition-all hover:scale-105 flex items-center justify-center"
+                        className="flex-1 p-3 bg-linear-to-br from-purple-500 to-pink-600 text-white rounded-xl hover:shadow-lg transition-all hover:scale-105 flex items-center justify-center"
                       >
                         <Instagram size={22} />
                       </a>

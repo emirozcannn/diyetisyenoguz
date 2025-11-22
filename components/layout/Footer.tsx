@@ -14,6 +14,17 @@ interface FooterData {
   corporateLinks: FooterLink[];
   legalLinks: FooterLink[];
   copyrightText: string;
+  contactInfo?: {
+    address?: string;
+    phone?: string;
+    email?: string;
+  };
+  socialMedia?: {
+    instagram?: string;
+    facebook?: string;
+    linkedin?: string;
+    youtube?: string;
+  };
 }
 
 interface FooterProps {
@@ -64,38 +75,46 @@ export default function Footer({ data }: FooterProps) {
               {footerData.description}
             </p>
             <div className="flex gap-3">
-              <a 
-                href={CONTACT_INFO.socialMedia.instagram} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-10 h-10 rounded-lg bg-white/10 hover:bg-gradient-primary flex items-center justify-center transition-all hover:scale-110"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a 
-                href={CONTACT_INFO.socialMedia.facebook} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-white/10 hover:bg-gradient-primary flex items-center justify-center transition-all hover:scale-110"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a 
-                href={CONTACT_INFO.socialMedia.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-white/10 hover:bg-gradient-primary flex items-center justify-center transition-all hover:scale-110"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a 
-                href={CONTACT_INFO.socialMedia.youtube} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-white/10 hover:bg-gradient-primary flex items-center justify-center transition-all hover:scale-110"
-              >
-                <Youtube className="w-5 h-5" />
-              </a>
+              {(footerData.socialMedia?.instagram || CONTACT_INFO.socialMedia.instagram) && (
+                <a 
+                  href={footerData.socialMedia?.instagram || CONTACT_INFO.socialMedia.instagram} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-gradient-primary flex items-center justify-center transition-all hover:scale-110"
+                >
+                  <Instagram className="w-5 h-5" />
+                </a>
+              )}
+              {(footerData.socialMedia?.facebook || CONTACT_INFO.socialMedia.facebook) && (
+                <a 
+                  href={footerData.socialMedia?.facebook || CONTACT_INFO.socialMedia.facebook} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-gradient-primary flex items-center justify-center transition-all hover:scale-110"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+              )}
+              {(footerData.socialMedia?.linkedin || CONTACT_INFO.socialMedia.linkedin) && (
+                <a 
+                  href={footerData.socialMedia?.linkedin || CONTACT_INFO.socialMedia.linkedin} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-gradient-primary flex items-center justify-center transition-all hover:scale-110"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+              )}
+              {(footerData.socialMedia?.youtube || CONTACT_INFO.socialMedia.youtube) && (
+                <a 
+                  href={footerData.socialMedia?.youtube || CONTACT_INFO.socialMedia.youtube} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-lg bg-white/10 hover:bg-gradient-primary flex items-center justify-center transition-all hover:scale-110"
+                >
+                  <Youtube className="w-5 h-5" />
+                </a>
+              )}
             </div>
           </div>
 
@@ -143,28 +162,30 @@ export default function Footer({ data }: FooterProps) {
                 <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
                   <MapPin className="w-4 h-4 text-primary-400" />
                 </div>
-                <span className="text-black leading-relaxed">{CONTACT_INFO.address}</span>
+                <span className="text-black leading-relaxed">
+                  {footerData.contactInfo?.address || CONTACT_INFO.address}
+                </span>
               </li>
               <li>
                 <a 
-                  href={`tel:${CONTACT_INFO.phone}`} 
+                  href={`tel:${footerData.contactInfo?.phone || CONTACT_INFO.phone}`} 
                   className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-lg bg-white/10 group-hover:bg-gradient-primary flex items-center justify-center transition-all">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <span>{CONTACT_INFO.phone}</span>
+                  <span>{footerData.contactInfo?.phone || CONTACT_INFO.phone}</span>
                 </a>
               </li>
               <li>
                 <a 
-                  href={`mailto:${CONTACT_INFO.email}`} 
+                  href={`mailto:${footerData.contactInfo?.email || CONTACT_INFO.email}`} 
                   className="flex items-center gap-3 text-gray-400 hover:text-primary-400 transition-colors group"
                 >
                   <div className="w-8 h-8 rounded-lg bg-white/10 group-hover:bg-gradient-primary flex items-center justify-center transition-all">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span>{CONTACT_INFO.email}</span>
+                  <span>{footerData.contactInfo?.email || CONTACT_INFO.email}</span>
                 </a>
               </li>
             </ul>

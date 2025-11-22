@@ -159,9 +159,9 @@ export default function Testimonials({ title: propTitle, subtitle: propSubtitle,
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
                     <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white relative group">
-                      {/* Quote Icon */}
-                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-white text-2xl font-serif">&quot;</span>
+                      {/* Quote Icon - Fully Rounded */}
+                      <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg">
+                        <span className="text-white text-3xl font-serif leading-none">&quot;</span>
                       </div>
 
                       {/* Rating */}

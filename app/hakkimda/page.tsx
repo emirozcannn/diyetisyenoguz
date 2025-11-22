@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Award, Users, GraduationCap, Briefcase, FileText, BookOpen, Quote as QuoteIcon, ExternalLink } from 'lucide-react';
+import { Award, Users, GraduationCap, Briefcase, FileText, BookOpen, Quote as QuoteIcon, ExternalLink, Star, CheckCircle, Target, BookText, Medal, Badge, User, UserCircle, Heart, Lightbulb, Sparkles, Flame, Zap, Trophy, TrendingUp, Sparkle, Dumbbell, Brain, Microscope, Download } from 'lucide-react';
 import Image from 'next/image';
 import { client } from '@/lib/sanity/client';
 import { PortableText } from '@portabletext/react';
@@ -56,6 +56,12 @@ interface AboutData {
     year: string;
     description: string;
     link?: string;
+    file?: {
+      asset: {
+        _ref: string;
+        _type: string;
+      };
+    };
   }>;
 }
 
@@ -64,6 +70,26 @@ const iconMap: Record<string, React.ComponentType<{ className?: string; size?: n
   Users,
   GraduationCap,
   Briefcase,
+  Star,
+  CheckCircle,
+  Target,
+  BookOpen,
+  BookText,
+  Medal,
+  Badge,
+  User,
+  UserCircle,
+  Heart,
+  Lightbulb,
+  Sparkles,
+  Flame,
+  Zap,
+  Trophy,
+  TrendingUp,
+  Sparkle,
+  Dumbbell,
+  Brain,
+  Microscope,
 };
 
 const colorMap: Record<string, string> = {
@@ -448,16 +474,29 @@ export default function HakkimdaPage() {
                         <p className="text-gray-600 leading-relaxed">{pub.description}</p>
                       </div>
                     </div>
-                    {pub.link && (
-                      <a
-                        href={pub.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-gray-100 hover:bg-primary-100 rounded-xl transition-colors group"
-                      >
-                        <ExternalLink className="text-gray-600 group-hover:text-primary-600" size={20} />
-                      </a>
-                    )}
+                    <div className="flex flex-col gap-2">
+                      {pub.link && (
+                        <a
+                          href={pub.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-gray-100 hover:bg-primary-100 rounded-xl transition-colors group"
+                          title="Dış bağlantıya git"
+                        >
+                          <ExternalLink className="text-gray-600 group-hover:text-primary-600" size={20} />
+                        </a>
+                      )}
+                      {pub.file?.asset && (
+                        <a
+                          href={`https://cdn.sanity.io/files/${client.config().projectId}/${client.config().dataset}/${pub.file.asset._ref.replace('file-', '').replace('-pdf', '.pdf').replace('-doc', '.doc').replace('-docx', '.docx')}`}
+                          download
+                          className="p-3 bg-emerald-100 hover:bg-emerald-200 rounded-xl transition-colors group"
+                          title="Dosyayı indir"
+                        >
+                          <Download className="text-emerald-600 group-hover:text-emerald-700" size={20} />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
