@@ -27,7 +27,7 @@ export default function CTASection({
   const mainButtonText = primaryButtonText || 'Ücretsiz Randevu Al';
   const mainButtonLink = primaryButtonLink || '/randevu';
   const phoneButtonText = secondaryButtonText || 'Hemen Ara';
-  const phoneButtonLink = secondaryButtonLink || 'tel:+905551234567';
+  const phoneButtonLink = secondaryButtonLink || 'tel:+905010138188';
 
   return (
     <section className="section-padding bg-gradient-to-r from-emerald-600 to-teal-600 text-white">

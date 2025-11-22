@@ -4,8 +4,8 @@ export const SITE_URL = 'https://oguzyolyapan.com';
 
 export const CONTACT_INFO = {
   email: 'oguzyolyapan@gmail.com',
-  phone: '+90 546 855 62 68',
-  whatsapp: '+905468556268',
+  phone: '+90 (501) 013-8188',
+  whatsapp: '+905010138188',
   address: 'Barbaros Mah. Sahilkent Sokak. B Kısım No:20. Süleymanpaşa/Tekirdağ',
   workingHours: {
     weekdays: 'Pazartesi - Cuma: 09:00 - 18:00',

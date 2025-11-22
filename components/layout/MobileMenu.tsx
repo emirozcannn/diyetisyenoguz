@@ -124,7 +124,7 @@ export default function MobileMenu({ open, onClose, navigation }: MobileMenuProp
             <div className="border-t border-gray-200 p-6 space-y-4 bg-gray-50">
               <h3 className="font-semibold text-gray-900 mb-3">İletişim Bilgileri</h3>
               <a 
-                href="tel:+905551234567" 
+                href="tel:+905010138188" 
                 className="flex items-center gap-3 text-gray-700 hover:text-primary-600 transition-colors"
               >
                 <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
@@ -132,11 +132,11 @@ export default function MobileMenu({ open, onClose, navigation }: MobileMenuProp
                 </div>
                 <div>
                   <div className="text-sm font-medium">Telefon</div>
-                  <div className="text-sm">+90 (555) 123-4567</div>
+                  <div className="text-sm">+90 (501) 013-8188</div>
                 </div>
               </a>
               <a 
-                href="mailto:info@oguzyolyapan.com" 
+                href="mailto:dyt.oguzyolyapan@gmail.com" 
                 className="flex items-center gap-3 text-gray-700 hover:text-primary-600 transition-colors"
               >
                 <div className="w-10 h-10 bg-secondary-100 rounded-lg flex items-center justify-center">
@@ -144,7 +144,7 @@ export default function MobileMenu({ open, onClose, navigation }: MobileMenuProp
                 </div>
                 <div>
                   <div className="text-sm font-medium">E-posta</div>
-                  <div className="text-sm">info@oguzyolyapan.com</div>
+                  <div className="text-sm">dyt.oguzyolyapan@gmail.com</div>
                 </div>
               </a>
             </div>

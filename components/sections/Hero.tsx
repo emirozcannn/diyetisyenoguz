@@ -49,7 +49,7 @@ export default function Hero({ data, stats }: HeroProps) {
   const primaryBtnText = data?.primaryButtonText || 'Ücretsiz Randevu Al';
   const primaryBtnLink = data?.primaryButtonLink || '/randevu';
   const secondaryBtnText = data?.secondaryButtonText || 'Hemen Ara';
-  const secondaryBtnPhone = data?.secondaryButtonPhone || '+905551234567';
+  const secondaryBtnPhone = data?.secondaryButtonPhone || '+905010138188';
   const heroImage = data?.image;
   
   return (
