@@ -62,7 +62,7 @@ export default function BlogPage() {
     console.log('Blog page: Fetching blog posts...');
     Promise.all([
       client.fetch<BlogPost[]>(`
-        *[_type == "blog"] | order(publishedAt desc) {
+        *[_type == "post"] | order(publishedAt desc) {
           _id,
           title,
           slug,

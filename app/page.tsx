@@ -71,7 +71,7 @@ async function getTestimonials() {
 async function getBlogPosts() {
   try {
     const posts = await client.fetch(
-      `*[_type == "blog"] | order(publishedAt desc)[0...3] {
+      `*[_type == "post"] | order(publishedAt desc)[0...3] {
         _id,
         title,
         slug,
