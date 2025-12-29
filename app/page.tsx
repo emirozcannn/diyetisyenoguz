@@ -5,6 +5,7 @@ import Testimonials from '@/components/sections/Testimonials';
 import BlogPreview from '@/components/sections/BlogPreview';
 import CTASection from '@/components/sections/CTASection';
 import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema';
+import LocationsGrid from '@/components/sections/LocationsGrid';
 import { client } from '@/lib/sanity/client';
 import type { Metadata } from 'next';
 
@@ -164,6 +165,8 @@ export default async function Home() {
         subtitle={homeData?.testimonialsSection?.subtitle}
         testimonials={testimonials}
       />
+      
+      <LocationsGrid />
       
       <BlogPreview 
         title={homeData?.blogPreviewSection?.title}

@@ -118,3 +118,40 @@ export const legalPageQuery = groq`
     lastUpdated
   }
 `;
+
+// Location Pages
+export const locationPagesQuery = groq`
+  *[_type == "locationPage" && isActive == true] | order(order asc) {
+    _id,
+    title,
+    location,
+    slug,
+    hero {
+      h1,
+      subtitle
+    },
+    order
+  }
+`;
+
+export const locationPageBySlugQuery = groq`
+  *[_type == "locationPage" && slug.current == $slug && isActive == true][0] {
+    ...,
+    hero {
+      ...,
+      image {
+        asset->
+      }
+    },
+    servicesHighlight {
+      title,
+      services[]-> {
+        _id,
+        title,
+        slug,
+        shortDescription,
+        icon
+      }
+    }
+  }
+`;

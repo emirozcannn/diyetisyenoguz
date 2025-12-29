@@ -65,10 +65,10 @@ export default function Footer({ data }: FooterProps) {
       </div>
 
       <div className="container-custom py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold mb-4 text-primary-400">
+            <h3 className="text-xl font-bold mb-4 text-primary-400">
               {footerData.title}
             </h3>
             <p className="text-sm text-gray-400 mb-6 leading-relaxed">
@@ -154,6 +154,49 @@ export default function Footer({ data }: FooterProps) {
             </ul>
           </div>
 
+          {/* Hizmet Bölgeleri */}
+          <div>
+            <h4 className="text-gray-900 font-semibold mb-6 text-lg">Hizmet Bölgeleri</h4>
+            <ul className="space-y-3">
+              <li>
+                <Link 
+                  href="/bolge/tekirdag-diyetisyen" 
+                  className="text-sm text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-2 group"
+                >
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  <span>Tekirdağ</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/bolge/corlu-diyetisyen" 
+                  className="text-sm text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-2 group"
+                >
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  <span>Çorlu</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/bolge/cerkezkoy-diyetisyen" 
+                  className="text-sm text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-2 group"
+                >
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  <span>Çerkezköy</span>
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/bolge/malkara-diyetisyen" 
+                  className="text-sm text-gray-400 hover:text-primary-400 transition-colors flex items-center gap-2 group"
+                >
+                  <ArrowRight className="w-4 h-4 opacity-0 -ml-6 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                  <span>Malkara</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* İletişim */}
           <div>
             <h4 className="text-gray-900 font-semibold mb-6 text-lg">İletişim</h4>
@@ -187,6 +230,14 @@ export default function Footer({ data }: FooterProps) {
                   </div>
                   <span>{footerData.contactInfo?.email || CONTACT_INFO.email}</span>
                 </a>
+              </li>
+              <li className="mt-4 pt-4 border-t border-white/10">
+                <div className="text-xs text-gray-500 mb-2 font-medium">Çalışma Saatleri:</div>
+                <div className="text-sm space-y-1">
+                  <div className="text-gray-400">Pzt-Cuma: <span className="text-primary-400 font-medium">09:00-18:00</span></div>
+                  <div className="text-gray-400">Cumartesi: <span className="text-primary-400 font-medium">09:00-14:00</span></div>
+                  <div className="text-gray-400">Pazar: <span className="text-red-400 font-medium">Kapalı</span></div>
+                </div>
               </li>
             </ul>
           </div>

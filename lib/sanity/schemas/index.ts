@@ -13,6 +13,7 @@ import legalPage from './legalPage';
 import navigation from './navigation';
 import footer from './footer';
 import contactPage from './contactPage';
+import locationPage from './locationPage';
 
 export const schemaTypes = [
   siteSettings,
@@ -30,4 +31,5 @@ export const schemaTypes = [
   navigation,
   footer,
   contactPage,
+  locationPage,
 ];
