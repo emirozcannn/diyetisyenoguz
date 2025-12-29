@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: '<meta name="google-site-verification" content="MsG3mxWbUnOo-F4Omw7oYL5iGTqOHTzeqtkJdFApVpI" />',
+    google: 'MsG3mxWbUnOo-F4Omw7oYL5iGTqOHTzeqtkJdFApVpI',
   },
 };
 
