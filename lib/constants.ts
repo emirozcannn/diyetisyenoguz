@@ -1,6 +1,6 @@
-export const SITE_NAME = 'Uzman Diyetisyen Oğuz Yolyapan - Tekirdağ';
-export const SITE_DESCRIPTION = 'Tekirdağ\'ta profesyonel beslenme danışmanlığı ve kişiye özel diyet programları ile sağlıklı yaşam. Süleymanpaşa, Marmaraereğlisi ve tüm Tekirdağ için uzman diyetisyen hizmeti.';
-export const SITE_URL = 'https://oguzyolyapan.com';
+export const SITE_NAME = 'Tekirdağ Diyetisyen | Uzman Diyetisyen Oğuz Yolyapan';
+export const SITE_DESCRIPTION = 'Tekirdağ\'da uzman diyetisyen Oğuz Yolyapan ile kişiye özel online diyet programları. Süleymanpaşa, Çorlu, Çerkezköy hizmet bölgesi. Ücretsiz ön görüşme için hemen arayın!';
+export const SITE_URL = 'https://diyetisyenoguz.com';
 
 export const CONTACT_INFO = {
   email: 'oguzyolyapan@gmail.com',

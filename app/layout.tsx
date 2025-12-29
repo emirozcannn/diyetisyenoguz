@@ -13,33 +13,38 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_NAME,
-    template: `%s | ${SITE_NAME}`,
+    template: `%s | Diyetisyen Oğuz Yolyapan`,
   },
   description: SITE_DESCRIPTION,
-  metadataBase: new URL(SITE_URL),
   keywords: [
     'tekirdağ diyetisyen',
+    'tekirdağ uzman diyetisyen',
     'diyetisyen tekirdağ',
     'süleymanpaşa diyetisyen',
-    'diyetisyen süleymanpaşa',
-    'marmaraereğlisi diyetisyen',
-    'uzman diyetisyen tekirdağ',
+    'çorlu diyetisyen',
+    'çerkezköy diyetisyen',
+    'tekirdağ online diyet',
     'tekirdağ beslenme danışmanı',
     'tekirdağ diyet programı',
     'tekirdağ kilo verme',
-    'çorlu diyetisyen',
-    'çerkezköy diyetisyen',
     'malkara diyetisyen',
     'hayrabolu diyetisyen',
-    'online diyet',
+    'marmaraereğlisi diyetisyen',
     'online diyetisyen',
+    'kişiye özel diyet',
     'sağlıklı beslenme',
-    'kilo verme',
-    'diyet programı',
+    'sporcu beslenmesi',
+    'hamilelik beslenmesi',
   ],
-  authors: [{ name: 'Oğuz Yolyapan' }],
+  authors: [{ name: 'Uzman Diyetisyen Oğuz Yolyapan' }],
+  creator: 'Uzman Diyetisyen Oğuz Yolyapan',
+  publisher: 'Uzman Diyetisyen Oğuz Yolyapan',
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
@@ -47,11 +52,35 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Tekirdağ Diyetisyen Oğuz Yolyapan',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+    creator: '@diyetisyenoguz',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: '<meta name="google-site-verification" content="MsG3mxWbUnOo-F4Omw7oYL5iGTqOHTzeqtkJdFApVpI" />',
   },
 };
 

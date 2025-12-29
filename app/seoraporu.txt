@@ -1,0 +1,99 @@
+diyetisyenoguz.com
+Kapsamlı SEO Analiz Raporu
+Rakip Karşılaştırması & Acil Eylem Planı
+Rapor Tarihi: 29 Aralık 2025
+🚨 KRİTİK BULGU: SİTE GOOGLE'DA İNDEXLENMEMİŞ
+"Tekirdağ Diyetisyen" aramasında diyetisyenoguz.com HİÇ GÖRÜNMÜYOR! Bu, tüm SEO çalışmalarından önce çözülmesi gereken en kritik sorundur.
+Rakip diyetisyenmucahitokluk.com aynı aramada 2. sırada görünürken, senin siten hiçbir sonuçta yer almıyor. Bu durum ya indexleme sorunu ya da çok düşük domain authority'den kaynaklanıyor olabilir.
+1. RAKİP ANALİZİ
+1.1 Genel Karşılaştırma Tablosu
+Özellik	diyetisyenoguz.com	edaekinci.com	mucahitokluk
+Teknoloji	Next.js + Sanity	WordPress	Wix
+Google Sıralaması	❌ Görünmüyor	İlk sayfa değil	✓ 2. sıra
+Hizmet Sayfaları	3 paket	8+ özel sayfa	2-3 sayfa
+Blog Yazısı	3+	10+	1-2
+Sosyal Kanıt	100+ danışan	Yorumlar var	39.000 danışan!
+Platform Backlink	❌ Yok	DoktorTakvimi, EkşiSözlük, 5+ platform	DoktorSitesi
+1.2 Content Gap (İçerik Boşluğu) Analizi
+Rakiplerde olup sende OLMAYAN içerikler:
+•	Hastalıklara Özgü Beslenme Sayfaları (Diyabet, PCOS, Tiroid, Reflü vb.)
+•	Sporcu Beslenmesi - edaekinci.com'da detaylı sayfa var
+•	Çocuk Beslenmesi - edaekinci.com'da detaylı sayfa var
+•	Kadınlara Özel Beslenme (Hamilelik, Emzirme, Menopoz)
+•	Kurumsal Menü Planlama Hizmeti
+•	Tekirdağ İlçe Sayfaları (Çorlu, Çerkezköy, Malkara diyetisyen)
+•	BKI/Kalori Hesaplama Aracı
+•	Diploma/Sertifika/Medya Görünürlüğü Sayfası (E-E-A-T için kritik)
+ 
+2. TEKNİK SEO DENETİMİ
+2.1 Next.js SSR & Image Optimization ✓
+Olumlu Bulgular:
+•	Next.js Image component kullanılıyor (/_next/image görünüyor)
+•	Sanity CDN'den görseller optimize ediliyor (?w=800&h=800)
+•	SSR çalışıyor - içerik HTML'de render ediliyor
+2.2 Tespit Edilen Sorunlar
+Kritik Sorunlar:
+1.	Title Tag: "Uzman Diyetisyen Oğuz Yolyapan - Tekirdağ" - "Tekirdağ Diyetisyen" anahtar kelimesi başta değil!
+2.	H1 Tag: "Tekirdağ Uzman DiyetisyenSağlıklı Beslenme" - Boşluk hatası var, düzeltilmeli
+3.	Google Search Console: Muhtemelen kurulu değil veya sitemap gönderilmemiş
+4.	Schema Markup: LocalBusiness veya Dietitian şeması görünmüyor
+3. LOCAL SEO & SCHEMA ANALİZİ
+3.1 NAP (Name, Address, Phone) Tutarlılığı
+Mevcut Bilgiler:
+•	Ad: Oğuz Yolyapan / Uzman Diyetisyen Oğuz Yolyapan
+•	Adres: Barbaros Mah. Sahilkent Sokak. B Kısım No:20. Süleymanpaşa/Tekirdağ
+•	Telefon: +90 (501) 013-8188
+⚠️ Önemli: Bu bilgiler Google İşletme Profili ile BİREBİR AYNI olmalı!
+3.2 Eksik Yerel SEO Sinyalleri
+•	❌ Google Maps iframe embed YOK
+•	❌ "Yol Tarifi Al" butonu YOK
+•	❌ Çalışma saatleri web sitesinde YOK
+•	❌ Hizmet bölgeleri sayfası YOK (Çorlu, Çerkezköy vb.)
+•	❌ JSON-LD LocalBusiness şeması YOK
+ 
+4. NEXT.JS KOD ÖNERİLERİ
+4.1 app/layout.tsx - Root Metadata
+import type { Metadata } from 'next'  export const metadata: Metadata = {   metadataBase: new URL('https://diyetisyenoguz.com'),   title: {     default: 'Tekirdağ Diyetisyen | Uzman Diyetisyen Oğuz Yolyapan',     template: '%s | Diyetisyen Oğuz Yolyapan'   },   description: 'Tekirdağ\'da uzman diyetisyen Oğuz Yolyapan ile kişiye özel online diyet programları. Süleymanpaşa, Çorlu, Çerkezköy hizmet bölgesi. Ücretsiz ön görüşme için hemen arayın!',   keywords: ['Tekirdağ diyetisyen', 'Tekirdağ uzman diyetisyen', 'online diyet', 'Süleymanpaşa diyetisyen', 'Çorlu diyetisyen'],   authors: [{ name: 'Uzman Diyetisyen Oğuz Yolyapan' }],   openGraph: {     type: 'website',     locale: 'tr_TR',     url: 'https://diyetisyenoguz.com',     siteName: 'Diyetisyen Oğuz Yolyapan',     title: 'Tekirdağ Diyetisyen | Uzman Diyetisyen Oğuz Yolyapan',     description: 'Tekirdağ\'da kişiye özel diyet programları',     images: [{ url: '/og-image.jpg', width: 1200, height: 630 }]   },   twitter: { card: 'summary_large_image' },   robots: { index: true, follow: true },   alternates: { canonical: 'https://diyetisyenoguz.com' },   verification: {     google: 'GOOGLE_VERIFICATION_CODE_BURAYA'   } }
+4.2 components/LocalBusinessSchema.tsx
+export default function LocalBusinessSchema() {   const schema = {     "@context": "https://schema.org",     "@type": ["LocalBusiness", "Dietitian", "MedicalBusiness"],     "@id": "https://diyetisyenoguz.com/#business",     "name": "Uzman Diyetisyen Oğuz Yolyapan",     "alternateName": "Diyetisyen Oğuz",     "description": "Tekirdağ'da uzman diyetisyen hizmetleri",     "url": "https://diyetisyenoguz.com",     "telephone": "+905010138188",     "email": "oguzyolyapan@gmail.com",     "address": {       "@type": "PostalAddress",       "streetAddress": "Barbaros Mah. Sahilkent Sok. B Kısım No:20",       "addressLocality": "Süleymanpaşa",       "addressRegion": "Tekirdağ",       "postalCode": "59030",       "addressCountry": "TR"     },     "geo": {       "@type": "GeoCoordinates",       "latitude": "40.9833",  // Gerçek koordinatları ekle       "longitude": "27.5167"     },     "openingHoursSpecification": [       {         "@type": "OpeningHoursSpecification",         "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],         "opens": "09:00",         "closes": "18:00"       }     ],     "areaServed": [       { "@type": "City", "name": "Tekirdağ" },       { "@type": "City", "name": "Süleymanpaşa" },       { "@type": "City", "name": "Çorlu" },       { "@type": "City", "name": "Çerkezköy" }     ],     "priceRange": "₺₺",     "image": "https://diyetisyenoguz.com/images/oguz-yolyapan.jpg",     "sameAs": [       "https://www.instagram.com/diyetisyenoguz/"     ]   };      return (     <script       type="application/ld+json"       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}     />   ); }
+4.3 components/GoogleMapsEmbed.tsx
+export default function GoogleMapsEmbed() {   return (     <div className="w-full aspect-video rounded-lg overflow-hidden">       <iframe         src="https://www.google.com/maps/embed?pb=!1m18!..."         width="100%"         height="100%"         style={{ border: 0 }}         allowFullScreen         loading="lazy"         referrerPolicy="no-referrer-when-downgrade"         title="Diyetisyen Oğuz Yolyapan - Tekirdağ Konum"       />       <a         href="https://www.google.com/maps/dir/?api=1&destination=..."         target="_blank"         rel="noopener noreferrer"         className="mt-4 inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"       >         📍 Yol Tarifi Al       </a>     </div>   ); }
+ 
+5. ACİL EYLEM PLANI
+🔴 KRİTİK - Bu Hafta Yapılmalı
+1.	Google Search Console Kurulumu Site doğrulaması yap, sitemap.xml gönder, index durumunu kontrol et
+2.	sitemap.xml Oluştur next-sitemap paketi kur: npm install next-sitemap
+3.	robots.txt Düzenle Sitemap: https://diyetisyenoguz.com/sitemap.xml satırını ekle
+4.	Title Tag Güncelle "Tekirdağ Diyetisyen" anahtar kelimesini başa al
+5.	H1 Tag Düzelt "Tekirdağ Uzman DiyetisyenSağlıklı Beslenme" → boşluk ekle
+6.	LocalBusiness Schema Ekle Yukarıdaki kod örneğini layout.tsx'e ekle
+🟠 YÜKSEK ÖNCELİK - 2 Hafta İçinde
+1.	Google İşletme Profili Optimizasyonu Web sitesi linkini ekle, kategorileri doğrula, fotoğraf ekle
+2.	Platform Kayıtları DoktorTakvimi, DoktorSitesi, Armut.com'a profil oluştur (backlink için kritik!)
+3.	Google Maps Embed Ekle İletişim sayfasına harita ve yol tarifi butonu ekle
+4.	Çalışma Saatleri Ekle Footer'a ve iletişim sayfasına çalışma saatlerini ekle
+🟡 ORTA ÖNCELİK - 1 Ay İçinde
+1.	Hizmet Bölgeleri Sayfaları /tekirdag-diyetisyen, /corlu-diyetisyen, /cerkezkoy-diyetisyen sayfaları oluştur
+2.	Hastalıklara Özel Sayfalar Diyabet beslenmesi, PCOS diyeti, sporcu beslenmesi sayfaları
+3.	Blog İçerik Takvimi Haftada 1 SEO odaklı blog yazısı hedefle
+4.	BKI Hesaplama Aracı Kullanıcı etkileşimi ve sayfa süresini artırmak için
+ 
+6. SONUÇ VE ÖNEMLİ NOTLAR
+⚠️ EN ÖNEMLİ BULGU: Siten "Tekirdağ Diyetisyen" aramasında Google'da hiç görünmüyor. Bu, tüm diğer SEO çalışmalarından önce çözülmesi gereken temel sorundur.
+Hemen Yapılması Gerekenler:
+•	Google Search Console'a siteyi ekle ve doğrula
+•	sitemap.xml oluştur ve gönder
+•	Index Coverage raporunu kontrol et - bloklanmış sayfalar var mı?
+•	URL'yi manuel olarak indexlemeye gönder
+Rakibin Güçlü Yönleri (Öğrenilecekler):
+•	Eda Ekinci: 5+ sağlık platformunda profili var → güçlü backlink profili
+•	Mücahit Öklük: "39.000 danışan" gibi güçlü sosyal kanıt kullanıyor
+•	Her ikisi de yerel SEO sinyallerini (adres, telefon) belirgin şekilde gösteriyor
+Senin Avantajların:
+•	Next.js teknolojisi (hız ve SEO avantajı)
+•	Modern, profesyonel tasarım
+•	Sanity CMS ile kolay içerik yönetimi
+•	"Uzman Diyetisyen" unvanı (yüksek lisans)
+---
+Bu rapor Claude AI tarafından canlı web analizi ile hazırlanmıştır.
+29 Aralık 2025

@@ -5,10 +5,10 @@ import { schemaTypes } from './lib/sanity/schemas';
 
 export default defineConfig({
   name: 'default',
-  title: 'Oğuz Yolyapan - Diyetisyen',
+  title: 'Oğuz Yolyapan - Uzman Diyetisyen',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
-  basePath: '/studio',
+  basePath: '/admin',
   plugins: [structureTool(), visionTool()],
   schema: {
     types: schemaTypes,

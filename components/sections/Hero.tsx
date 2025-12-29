@@ -41,9 +41,9 @@ export default function Hero({ data, stats }: HeroProps) {
     { value: '%95', label: 'Başarı Oranı' }
   ];
 
-  const heroTitle = data?.title || 'Sağlıklı Yaşam İçin';
-  const heroHighlight = data?.highlightedText || 'Doğru Beslenme';
-  const heroSubtitle = data?.subtitle || 'Uzman diyetisyen desteğiyle kişiye özel beslenme programları. İzmir ve Tekirdağ\'da yüz yüze, online tüm Türkiye\'ye hizmet veriyoruz.';
+  const heroTitle = data?.title || 'Tekirdağ Uzman Diyetisyen';
+  const heroHighlight = data?.highlightedText || 'Sağlıklı Beslenme';
+  const heroSubtitle = data?.subtitle || 'Uzman diyetisyen Oğuz Yolyapan ile kişiye özel beslenme programları. Tekirdağ, Süleymanpaşa, Çorlu, Çerkezköy ve online tüm Türkiye\'ye hizmet veriyoruz.';
   const features = data?.features && data.features.length > 0 ? data.features : defaultFeatures;
   const displayStats = stats && stats.length > 0 ? stats : defaultStats;
   const primaryBtnText = data?.primaryButtonText || 'Ücretsiz Randevu Al';

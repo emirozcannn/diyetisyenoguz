@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/studio/'],
+      disallow: ['/api/'],
     },
-    sitemap: 'https://oguzyolyapan.com/sitemap.xml',
+    sitemap: 'https://diyetisyenoguz.com/sitemap.xml',
   };
 }

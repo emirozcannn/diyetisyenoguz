@@ -36,7 +36,7 @@ export default function Footer({ data }: FooterProps) {
 
   // Default fallback data
   const footerData = data || {
-    title: 'Oğuz Yolyapan',
+    title: 'Uzman Diyetisyen Oğuz Yolyapan',
     description: 'Profesyonel beslenme danışmanlığı ve kişiye özel diyet programları ile sağlıklı yaşam yolculuğunuzda yanınızdayız.',
     servicesLinks: [
       { name: 'Online Diyet', href: '/hizmetler/online-diyet' },

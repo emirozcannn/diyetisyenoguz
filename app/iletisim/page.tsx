@@ -346,15 +346,27 @@ export default function IletisimPage() {
               <Card className="p-0 overflow-hidden shadow-xl">
                 <div className="aspect-video relative">
                   <iframe
-                    src={data?.addressDetails?.mapUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.8!2d27.5!3d40.98!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDU4JzQ4LjAiTiAyN8KwMzAnMDAuMCJF!5e0!3m2!1str!2str!4v1234567890"}
+                    src={data?.addressDetails?.mapUrl || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3034.956!2d27.5167!3d40.9833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDU4JzU5LjkiTiAyN8KwMzEnMDAuMSJF!5e0!3m2!1str!2str!4v1234567890"}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    title="Diyetisyen Oğuz Yolyapan - Tekirdağ Konum"
                     className="absolute inset-0"
                   />
+                </div>
+                <div className="p-4 bg-white">
+                  <a
+                    href="https://www.google.com/maps/dir/?api=1&destination=Barbaros+Mah.+Sahilkent+Sok.+B+Kısım+No:20+Süleymanpaşa+Tekirdağ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-gradient-primary text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all duration-300 font-medium w-full justify-center"
+                  >
+                    <MapPin className="w-5 h-5" />
+                    Yol Tarifi Al
+                  </a>
                 </div>
               </Card>
 

@@ -4,7 +4,23 @@ import AboutPreview from '@/components/sections/AboutPreview';
 import Testimonials from '@/components/sections/Testimonials';
 import BlogPreview from '@/components/sections/BlogPreview';
 import CTASection from '@/components/sections/CTASection';
+import LocalBusinessSchema from '@/components/seo/LocalBusinessSchema';
 import { client } from '@/lib/sanity/client';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Tekirdağ Diyetisyen | Uzman Diyetisyen Oğuz Yolyapan',
+  description: 'Tekirdağ\'da uzman diyetisyen Oğuz Yolyapan ile kişiye özel online diyet programları. Süleymanpaşa, Çorlu, Çerkezköy hizmet bölgesi. Ücretsiz ön görüşme için hemen arayın!',
+  alternates: {
+    canonical: 'https://diyetisyenoguz.com',
+  },
+  openGraph: {
+    title: 'Tekirdağ Diyetisyen | Uzman Diyetisyen Oğuz Yolyapan',
+    description: 'Tekirdağ\'da kişiye özel diyet programları ve beslenme danışmanlığı',
+    url: 'https://diyetisyenoguz.com',
+    type: 'website',
+  },
+};
 
 async function getHomePageData() {
   try {
@@ -101,6 +117,7 @@ export default async function Home() {
 
   return (
     <>
+      <LocalBusinessSchema />
       <Hero 
         data={{
           title: homeData?.hero?.title,
