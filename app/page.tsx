@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     description: 'Tekirdağ\'da kişiye özel diyet programları ve beslenme danışmanlığı',
     url: 'https://www.diyetisyenoguz.com',
     type: 'website',
+    images: [
+      {
+        url: 'https://www.diyetisyenoguz.com/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Tekirdağ Diyetisyen - Uzman Diyetisyen Oğuz Yolyapan',
+      },
+    ],
   },
 };
 
