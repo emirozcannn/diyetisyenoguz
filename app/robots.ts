@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://diyetisyenoguz.com/sitemap.xml',
+    sitemap: 'https://www.diyetisyenoguz.com/sitemap.xml',
   };
 }

@@ -12,12 +12,12 @@ export const metadata: Metadata = {
   title: 'Tekirdağ Diyetisyen | Uzman Diyetisyen Oğuz Yolyapan',
   description: 'Tekirdağ\'da uzman diyetisyen Oğuz Yolyapan ile kişiye özel online diyet programları. Süleymanpaşa, Çorlu, Çerkezköy hizmet bölgesi. Ücretsiz ön görüşme için hemen arayın!',
   alternates: {
-    canonical: 'https://diyetisyenoguz.com',
+    canonical: 'https://www.diyetisyenoguz.com',
   },
   openGraph: {
     title: 'Tekirdağ Diyetisyen | Uzman Diyetisyen Oğuz Yolyapan',
     description: 'Tekirdağ\'da kişiye özel diyet programları ve beslenme danışmanlığı',
-    url: 'https://diyetisyenoguz.com',
+    url: 'https://www.diyetisyenoguz.com',
     type: 'website',
   },
 };
