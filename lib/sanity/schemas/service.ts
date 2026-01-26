@@ -29,6 +29,7 @@ export default defineType({
       title: 'Detaylı Açıklama',
       type: 'array',
       of: [{ type: 'block' }],
+      description: 'Detay sayfasında gösterilecek uzun açıklama',
     }),
     defineField({
       name: 'features',
@@ -42,10 +43,28 @@ export default defineType({
       type: 'number',
     }),
     defineField({
+      name: 'priceText',
+      title: 'Fiyat Metni',
+      type: 'string',
+      description: 'Örn: "Aylık ₺500" veya "3 Aylık ₺1200"',
+    }),
+    defineField({
       name: 'duration',
       title: 'Süre',
       type: 'string',
-      description: 'Örn: 3 ay, 6 ay',
+      description: 'Örn: "3 Ay", "6 Ay"',
+    }),
+    defineField({
+      name: 'sessions',
+      title: 'Görüşme Sayısı',
+      type: 'number',
+      description: 'Paketteki toplam görüşme sayısı',
+    }),
+    defineField({
+      name: 'support',
+      title: 'Destek',
+      type: 'string',
+      description: 'Örn: "7/24 WhatsApp", "Haftalık Kontrol"',
     }),
     defineField({
       name: 'image',

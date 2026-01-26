@@ -1,7 +1,7 @@
 'use client';
 
 import Card from '@/components/ui/Card';
-import { Star, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, MapPin, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanity/image';
@@ -26,6 +26,19 @@ export default function Testimonials({ title: propTitle, subtitle: propSubtitle,
   
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
+
+  const toggleExpanded = (id: string) => {
+    setExpandedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
 
   // Default testimonials if none provided
   const defaultTestimonials = [
@@ -158,47 +171,61 @@ export default function Testimonials({ title: propTitle, subtitle: propSubtitle,
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
-                    <Card className="h-full hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 bg-white relative group">
-                      {/* Quote Icon - Fully Rounded */}
-                      <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-white text-3xl font-serif leading-none">&quot;</span>
+                    <Card className="h-full hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 bg-white relative group overflow-hidden border border-gray-100">
+                      {/* Decorative gradient bar at top */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-primary"></div>
+                      
+                      {/* Quote Icon - Improved */}
+                      <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary-50 rounded-full flex items-center justify-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <span className="text-primary-600 text-5xl font-serif leading-none">&quot;</span>
                       </div>
 
                       {/* Rating */}
-                      <div className="flex gap-1 mb-4">
+                      <div className="flex gap-1 mb-6 relative z-10">
                         {Array.from({ length: testimonial.rating }).map((_, i) => (
-                          <Star key={i} size={20} className="fill-yellow-400 text-yellow-400" />
+                          <Star key={i} size={20} className="fill-yellow-400 text-yellow-400 drop-shadow-sm" />
                         ))}
                       </div>
 
                       {/* Text */}
-                      <p className="text-gray-700 mb-6 leading-relaxed italic">
-                        {testimonial.testimonial}
-                      </p>
+                      <div className="relative z-10 mb-8">
+                        <p className={`text-gray-700 leading-relaxed ${!expandedCards.has(testimonial._id) && testimonial.testimonial.length > 200 ? 'line-clamp-4' : ''}`}>
+                          &ldquo;{testimonial.testimonial}&rdquo;
+                        </p>
+                        {testimonial.testimonial.length > 200 && (
+                          <button
+                            onClick={() => toggleExpanded(testimonial._id)}
+                            className="mt-2 text-primary-600 hover:text-primary-700 font-medium text-sm flex items-center gap-1 transition-colors"
+                          >
+                            {expandedCards.has(testimonial._id) ? 'Daha Az Göster' : 'Devamını Oku'}
+                            <ChevronDown className={`w-4 h-4 transition-transform ${expandedCards.has(testimonial._id) ? 'rotate-180' : ''}`} />
+                          </button>
+                        )}
+                      </div>
 
                       {/* Author */}
-                      <div className="flex items-center gap-4 pt-6 border-t border-gray-100">
+                      <div className="flex items-center gap-4 pt-6 border-t border-gray-100 mt-auto">
                         {testimonial.photo ? (
-                          <div className="w-14 h-14 rounded-full overflow-hidden relative">
+                          <div className="w-16 h-16 rounded-full overflow-hidden relative ring-4 ring-primary-100 group-hover:ring-primary-200 transition-all">
                             <Image
-                              src={urlFor(testimonial.photo).width(56).height(56).url()}
+                              src={urlFor(testimonial.photo).width(64).height(64).url()}
                               alt={testimonial.name}
                               fill
                               className="object-cover"
                             />
                           </div>
                         ) : (
-                          <div className="w-14 h-14 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold text-xl shadow-md">
+                          <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center text-white font-bold text-xl shadow-lg ring-4 ring-primary-100">
                             {testimonial.name.charAt(0)}
                           </div>
                         )}
-                        <div>
-                          <div className="font-semibold text-gray-900 text-lg">
+                        <div className="flex-1">
+                          <div className="font-bold text-gray-900 text-lg">
                             {testimonial.name}
                           </div>
                           {testimonial.location && (
-                            <div className="flex items-center gap-1 text-sm text-gray-500">
-                              <MapPin size={14} />
+                            <div className="flex items-center gap-1 text-sm text-gray-500 mt-1">
+                              <MapPin size={14} className="text-primary-600" />
                               <span>{testimonial.location}</span>
                             </div>
                           )}

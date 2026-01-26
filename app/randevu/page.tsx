@@ -28,7 +28,7 @@ export default function RandevuPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-5xl font-bold mb-6 text-gradient"
+            className="text-5xl font-bold mb-6 text-white drop-shadow-lg"
           >
             Randevu Al
           </motion.h1>
@@ -37,7 +37,7 @@ export default function RandevuPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-xl text-gray-600 max-w-2xl mx-auto"
+            className="text-xl text-white/90 max-w-2xl mx-auto drop-shadow"
           >
             İlk görüşme ücretsiz! Hemen randevu alarak sağlıklı yaşama ilk adımı atın.
           </motion.p>
@@ -89,7 +89,7 @@ export default function RandevuPage() {
                 </div>
               </div>
 
-              <div className="p-6 bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-xl">
+              <div className="p-6 bg-linear-to-br from-emerald-600 to-teal-600 text-white rounded-xl">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-white/20 rounded-lg">
                     <Phone className="text-white" size={24} />

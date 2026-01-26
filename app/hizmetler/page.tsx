@@ -132,19 +132,21 @@ export default async function HizmetlerPage() {
 
         <div className="container-custom">
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             {services.map((service, index) => (
 
-              <div key={service._id}>
+              <div key={service._id} className="h-full">
 
-                <Card className="hover:shadow-2xl transition-all hover:-translate-y-2 h-full flex flex-col">
+                <Card className="hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 h-full flex flex-col overflow-hidden border border-gray-100">
 
-                  {/* Gradient header */}
+                  {/* Gradient header with improved design */}
 
-                  <div className={`-m-6 mb-6 p-6 bg-gradient-to-br ${gradients[index % gradients.length]} rounded-t-2xl`}>
+                  <div className={`-m-6 mb-6 p-8 bg-linear-to-br ${gradients[index % gradients.length]} rounded-t-2xl relative overflow-hidden`}>
 
-                    <h2 className="text-2xl font-bold text-white">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+
+                    <h2 className="text-2xl font-bold text-white relative z-10 drop-shadow-lg">
 
                       {service.title}
 
@@ -154,7 +156,7 @@ export default async function HizmetlerPage() {
 
                  
 
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-gray-600 mb-6 leading-relaxed">
 
                     {service.shortDescription}
 
@@ -166,11 +168,11 @@ export default async function HizmetlerPage() {
 
                     <div className="mb-6 flex-1">
 
-                      <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                      <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
 
                         <CheckCircle className="text-primary-600" size={20} />
 
-                        Paket İçeriği:
+                        Paket İçeriği
 
                       </h3>
 
@@ -182,7 +184,7 @@ export default async function HizmetlerPage() {
 
                             <span className="w-2 h-2 bg-gradient-primary rounded-full mr-3 mt-2 group-hover:scale-150 transition-transform"></span>
 
-                            <span className="text-gray-700">{feature}</span>
+                            <span className="text-gray-700 text-sm">{feature}</span>
 
                           </li>
 
@@ -194,31 +196,33 @@ export default async function HizmetlerPage() {
 
                   )}
 
+                  <div className="mt-auto flex flex-col gap-3 pt-6 border-t border-gray-100">
 
+                    <Link href={`/hizmetler/${service.slug.current}`}>
 
-                  {service.price && (
+                      <Button variant="outline" className="w-full group hover:bg-primary-600 hover:text-white hover:border-primary-600 transition-all duration-300">
 
-                    <div className="pt-4 border-t mb-6">
+                        Detaylı Bilgi
 
-                      <p className="text-sm text-gray-600 font-medium">{service.price}</p>
+                        <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
 
-                    </div>
+                      </Button>
 
-                  )}
+                    </Link>
 
+                    <Link href="/randevu">
 
+                      <Button className="w-full group shadow-lg hover:shadow-xl">
 
-                  <Link href="/randevu" className="mt-auto">
+                        Randevu Al
 
-                    <Button className="w-full group">
+                        <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
 
-                      Randevu Al
+                      </Button>
 
-                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={18} />
+                    </Link>
 
-                    </Button>
-
-                  </Link>
+                  </div>
 
                 </Card>
 

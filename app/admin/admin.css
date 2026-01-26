@@ -1,0 +1,20 @@
+/* Admin page specific styles */
+.admin-wrapper {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Hide header, footer, and WhatsApp button on admin pages */
+body:has(.admin-wrapper) > header,
+body:has(.admin-wrapper) > footer,
+body:has(.admin-wrapper) > div[class*="whatsapp"],
+body:has(.admin-wrapper) > a[href*="whatsapp"] {
+  display: none !important;
+}
+
+/* Make main full height on admin pages */
+body:has(.admin-wrapper) > main {
+  min-height: 100vh !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
