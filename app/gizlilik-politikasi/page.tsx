@@ -22,7 +22,7 @@ async function getPrivacyContent(): Promise<LegalPage | null> {
     lastUpdated
   }`;
   
-  return client.fetch(query);
+  return client.fetch(query, {}, { next: { revalidate: 86400 } }); // 1 day cache
 }
 
 export default async function GizlilikPolitikasiPage() {

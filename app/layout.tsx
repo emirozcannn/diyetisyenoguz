@@ -97,10 +97,12 @@ export default async function RootLayout({
       servicesLinks,
       corporateLinks,
       legalLinks,
-      copyrightText
+      copyrightText,
+      contactInfo,
+      socialMedia
     }`,
     {},
-    { next: { revalidate: 3600 } } // Cache for 1 hour
+    { next: { revalidate: 60 } } // Cache for 1 minute
   );
 
   return (

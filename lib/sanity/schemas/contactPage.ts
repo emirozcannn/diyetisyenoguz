@@ -4,6 +4,7 @@ export default defineType({
   name: 'contactPage',
   title: 'İletişim Sayfası',
   type: 'document',
+  __experimental_singleton: true,
   fields: [
     // Hero Section
     defineField({

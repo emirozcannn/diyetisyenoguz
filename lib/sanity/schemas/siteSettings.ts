@@ -4,6 +4,7 @@ export default defineType({
   name: 'siteSettings',
   title: 'Site Ayarları',
   type: 'document',
+  __experimental_singleton: true,
   fields: [
     defineField({
       name: 'siteTitle',

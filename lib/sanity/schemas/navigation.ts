@@ -4,6 +4,7 @@ export default defineType({
   name: 'navigation',
   title: 'Navigasyon',
   type: 'document',
+  __experimental_singleton: true,
   fields: [
     defineField({
       name: 'title',

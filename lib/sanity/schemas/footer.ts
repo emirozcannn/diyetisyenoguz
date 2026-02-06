@@ -4,6 +4,7 @@ export default defineType({
   name: 'footer',
   title: 'Footer Ayarları',
   type: 'document',
+  __experimental_singleton: true,
   fields: [
     defineField({
       name: 'title',
