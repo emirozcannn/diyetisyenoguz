@@ -4,6 +4,7 @@ export default defineType({
   name: 'homePage',
   title: 'Ana Sayfa',
   type: 'document',
+  __experimental_singleton: true,
   fields: [
     // --- HERO BÖLÜMÜ (Mevcut) ---
     defineField({

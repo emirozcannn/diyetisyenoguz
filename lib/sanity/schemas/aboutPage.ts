@@ -4,6 +4,7 @@ export default defineType({
   name: 'aboutPage',
   title: 'Hakkımda Sayfası',
   type: 'document',
+  __experimental_singleton: true,
   fields: [
     // Hero Section
     defineField({
